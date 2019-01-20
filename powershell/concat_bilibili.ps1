@@ -13,6 +13,8 @@ $Objs|ForEach-Object -Process{
     }
 }
 
+if($HashTable.Count -eq 0) {exit}
+
 ForEach ($item in $HashTable.Keys){
     $ListFile=Join-Path -Path $TMP -ChildPath ($item + '.list')
     if(Test-Path -LiteralPath $ListFile){echo $OutFile;Remove-Item -LiteralPath $ListFile -Force}
