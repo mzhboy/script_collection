@@ -23,5 +23,7 @@ PS /media/file/bili> gci -Filter *.flv|ForEach-Object -Process{if($_.name -match
 > [史密森尼]航拍美国 S01E01 加利福尼亚 (2010) [原创中字]-7407611.mp4
 
 **注意不会检查磁盘剩余空间大小**
+
 **注意会写入系统临时文件夹** (ffmpeg concat demuxer 的列表文件)，这个文件会自动删除
+
 **成功合并后会删除分段文件**
