@@ -24,14 +24,15 @@ ForEach ($item in $HashTable.Keys){
     $ArrFile=@()
 
 #   $Objs.Name.Where({$PSItem.StartsWith($HashTable[$item])}) # untested
-    $Objs|ForEach-Object -Process{
-        if ($_.Name.StartsWith($HashTable[$item])){
+    ForEach ($j in $Objs){
+        if ($j.Name.StartsWith($HashTable[$item])){
 # https://trac.ffmpeg.org/wiki/Concatenate
-            $ArrList += ("file '" + $_.FullName + "'")
-            $ArrFile += $_.FullName
+            $ArrList += ("file '" + $j.FullName + "'")
+            $ArrFile += $j.FullName
         }
     }
-    $ArrList|Out-File -LiteralPath $ListFile -Append -Encoding utf8 -Force
+#    $ArrList|Out-File -LiteralPath $ListFile -Append -Encoding utf8 -Force
+    Set-Content $ListFile -Value $ArrList -Encoding Unicode
 
     $OutMediaFile=$HashTable[$item] + '.mp4'
     $OutMediaFile=Join-Path -Path $MediaDir -ChildPath $OutMediaFile
