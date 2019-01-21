@@ -33,3 +33,7 @@
 5. String 的 `TrimEnd()` `TrimStart()` 方法不支持正则或通配符匹配，只删除输入的可以正确匹配的字符串。
 6. ForEach 的输入是不能被 `ForEach` 后面的块语句改变的，会报错
 7. 获取对象的时候可以显示地让对象成为数组。例如 `$objs = @(Get-ChildItem -Recurse)` 这样获取其对象数量的时候不会报错 `$objs.Count` ，而且使用上很方便，ISE会给出提示。
+8. Start-Process 当执行脚本所在文件夹包含 `[]` 时，会提示如下，解决这个问题，暂时只能把脚本文件移出该文件夹执行。
+>>	Start-Process : 无法执行操作，因为通配符路径 F:\[Sakurato.sub][Re Creators][01-22END][GB][720P] 无法解析为文件。
+	
+	
